@@ -117,7 +117,7 @@ action:
           - condition: template
             value_template: "{{ command == '4_double' }}"
         sequence: !input double_4
-		
+
       - conditions:
           - condition: template
             value_template: "{{ command == '1_hold' }}"
