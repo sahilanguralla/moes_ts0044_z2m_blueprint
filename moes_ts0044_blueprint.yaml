@@ -75,65 +75,67 @@ trigger:
     topic: !input switch_topic
 
 action:
+  - variables:
+      command: "{{ trigger.payload_json.action if trigger.payload_json is defined else trigger.payload }}"
   - choose:
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '1_single' }}"
+            value_template: "{{ command == '1_single' }}"
         sequence: !input single_1
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '2_single' }}"
+            value_template: "{{ command == '2_single' }}"
         sequence: !input single_2
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '3_single' }}"
+            value_template: "{{ command == '3_single' }}"
         sequence: !input single_3
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '4_single' }}"
+            value_template: "{{ command == '4_single' }}"
         sequence: !input single_4
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '1_double' }}"
+            value_template: "{{ command == '1_double' }}"
         sequence: !input double_1
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '2_double' }}"
+            value_template: "{{ command == '2_double' }}"
         sequence: !input double_2
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '3_double' }}"
+            value_template: "{{ command == '3_double' }}"
         sequence: !input double_3
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '4_double' }}"
+            value_template: "{{ command == '4_double' }}"
         sequence: !input double_4
 		
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '1_hold' }}"
+            value_template: "{{ command == '1_hold' }}"
         sequence: !input hold_1
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '2_hold' }}"
+            value_template: "{{ command == '2_hold' }}"
         sequence: !input hold_2
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '3_hold' }}"
+            value_template: "{{ command == '3_hold' }}"
         sequence: !input hold_3
 
       - conditions:
           - condition: template
-            value_template: "{{ trigger.payload == '4_hold' }}"
+            value_template: "{{ command == '4_hold' }}"
         sequence: !input hold_4
 
 mode: single
